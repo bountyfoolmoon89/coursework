@@ -1,9 +1,8 @@
 public class Employee {
-    private String FIO;
+    private final String FIO;
     private int department;
-    private float salary;
+    private static float salary;
     private static int id = 100000;
-    public int countEmployers = 0;
 
     public String getFIO() {
         return FIO;
@@ -13,16 +12,12 @@ public class Employee {
         return department;
     }
 
-    public float getSalary() {
+    public static float getSalary() {
         return salary;
     }
 
     public int getId() {
         return id;
-    }
-
-    public int getCountEmployers() {
-        return countEmployers;
     }
 
     public void setDepartment(int department) {
@@ -36,13 +31,11 @@ public class Employee {
     public Employee(String fio, int department, float salary){
         this.FIO = fio;
         this.department = department;
-        this.salary = salary;
-
+        Employee.salary = salary;
     }
     @Override
     public String toString() {
         id++;
-        countEmployers++;
         return "ID: " + id + " ФИО: " + FIO + " Отдел: " + department + " Зарплата: " + salary;
     }
 }
