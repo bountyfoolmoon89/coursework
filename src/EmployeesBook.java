@@ -1,6 +1,6 @@
-public class ArrEmployees {
-    static Employee[] employees = employers();
-    public static Employee[] employers(){
+public class EmployeesBook {
+    static Employee[] employees = employes();
+    public static Employee[] employes(){
         Employee[] employees = new Employee[10];
         employees[0] = new Employee("Лужин Егор Романович", 1, 32323);
         employees[1] = new Employee("Семак Сергей Богданович", 5, 50000);
@@ -21,6 +21,6 @@ public class ArrEmployees {
                 sum = sum + Employee.getSalary();
             }
         }
-        System.out.println("Сумма затрат на все зарплаты: " + sum);
+        System.out.println("Сумма затрат на все зарплаты в месяц: " + sum);
     }
 }
