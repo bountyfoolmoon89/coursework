@@ -15,12 +15,22 @@ public class EmployeesBook {
         return employees;
     }
     public static void sumSalary(){
+        float mid = 0;
+        for (Employee employee : employees) {
+            if (employee != null) {
+                mid = mid + Employee.getSalary();
+            }
+        }
+        System.out.println("Сумма затрат на все зарплаты в месяц: " + mid);
+    }
+    public static void midSalary(){
         float sum = 0;
         for (Employee employee : employees) {
             if (employee != null) {
                 sum = sum + Employee.getSalary();
+                sum = sum / employees.length;
             }
         }
-        System.out.println("Сумма затрат на все зарплаты в месяц: " + sum);
+        System.out.println("Средняя зарплата: " + sum);
     }
 }

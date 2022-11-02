@@ -5,6 +5,8 @@ public class Main {
         }
         printSeparator();
         EmployeesBook.sumSalary();
+        printSeparator();
+        EmployeesBook.midSalary();
     }
     public static void printSeparator() {
         System.out.println("----------------------------------------------------------------------------");
