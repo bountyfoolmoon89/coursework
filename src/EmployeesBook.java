@@ -33,4 +33,19 @@ public class EmployeesBook {
         }
         System.out.println("Средняя зарплата: " + sum);
     }
+    public static void minMaxSalary() {
+        float maxSalary = -1;
+        float minSalary = 1_000_000_000;
+        for (Employee employee : employees) {
+            if (employee != null) {
+                if (Employee.getSalary() > maxSalary) {
+                    maxSalary = Employee.getSalary();
+                }
+                if (Employee.getSalary() < minSalary) {
+                    minSalary = Employee.getSalary();
+                }
+            }
+        }
+        System.out.println("Минимальная зарплата " + minSalary + " рублей. Максимальная зарплата " + maxSalary + " рублей");
+    }
 }

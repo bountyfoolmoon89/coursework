@@ -7,6 +7,8 @@ public class Main {
         EmployeesBook.sumSalary();
         printSeparator();
         EmployeesBook.midSalary();
+        printSeparator();
+        EmployeesBook.minMaxSalary();
     }
     public static void printSeparator() {
         System.out.println("----------------------------------------------------------------------------");
