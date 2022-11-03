@@ -1,5 +1,5 @@
 public class EmployeesBook {
-    static Employee[] employees = employes();
+    public static Employee[] employees = employes();
     public static Employee[] employes(){
         Employee[] employees = new Employee[10];
         employees[0] = new Employee("Лужин Егор Романович", 1, 32323);
@@ -13,39 +13,5 @@ public class EmployeesBook {
         employees[8] = new Employee("Ремарк Мария Джозефовна", 5, 32789);
         employees[9] = new Employee("Трамп Дональд Фредович", 4, 123547);
         return employees;
-    }
-    public static void sumSalary(){
-        float mid = 0;
-        for (Employee employee : employees) {
-            if (employee != null) {
-                mid = mid + Employee.getSalary();
-            }
-        }
-        System.out.println("Сумма затрат на все зарплаты в месяц: " + mid);
-    }
-    public static void midSalary(){
-        float sum = 0;
-        for (Employee employee : employees) {
-            if (employee != null) {
-                sum = sum + Employee.getSalary();
-                sum = sum / employees.length;
-            }
-        }
-        System.out.println("Средняя зарплата: " + sum);
-    }
-    public static void minMaxSalary() {
-        float maxSalary = -1;
-        float minSalary = 1_000_000_000;
-        for (Employee employee : employees) {
-            if (employee != null) {
-                if (Employee.getSalary() > maxSalary) {
-                    maxSalary = Employee.getSalary();
-                }
-                if (Employee.getSalary() < minSalary) {
-                    minSalary = Employee.getSalary();
-                }
-            }
-        }
-        System.out.println("Минимальная зарплата " + minSalary + " рублей. Максимальная зарплата " + maxSalary + " рублей");
     }
 }

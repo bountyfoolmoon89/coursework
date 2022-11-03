@@ -1,7 +1,7 @@
 public class Employee {
     private final String FIO;
     private int department;
-    private static float salary;
+    private float salary;
     private static int id = 100000;
 
     public String getFIO() {
@@ -12,7 +12,7 @@ public class Employee {
         return department;
     }
 
-    public static float getSalary() {
+    public float getSalary() {
         return salary;
     }
 
@@ -31,7 +31,7 @@ public class Employee {
     public Employee(String fio, int department, float salary){
         this.FIO = fio;
         this.department = department;
-        Employee.salary = salary;
+        this.salary = salary;
     }
     @Override
     public String toString() {
