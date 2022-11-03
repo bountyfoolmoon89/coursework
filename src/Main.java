@@ -59,6 +59,5 @@ public class Main {
             indexedSalary = EmployeesBook.employees[i].getSalary() * 1.2;
             System.out.println("Новая зарплата у "+ EmployeesBook.employees[i].getFIO() + ": " + indexedSalary);
         }
-
     }
 }
