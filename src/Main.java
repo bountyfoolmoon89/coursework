@@ -13,6 +13,8 @@ public class Main {
         printSeparator();
         printFIO();
         printSeparator();
+        indexingSalary();
+        printSeparator();
     }
     public static void printSeparator() {
         System.out.println("----------------------------------------------------------------------------");
@@ -50,5 +52,13 @@ public class Main {
         for (int i = 0; i < EmployeesBook.employees.length; i++){
             System.out.println(EmployeesBook.employees[i].getFIO());
         }
+    }
+    public static void indexingSalary(){
+        double indexedSalary;
+        for (int i = 0; i < EmployeesBook.employees.length; i++){
+            indexedSalary = EmployeesBook.employees[i].getSalary() * 1.2;
+            System.out.println("Новая зарплата у "+ EmployeesBook.employees[i].getFIO() + ": " + indexedSalary);
+        }
+
     }
 }
