@@ -11,6 +11,8 @@ public class Main {
         printSeparator();
         minMaxSalary();
         printSeparator();
+        printFIO();
+        printSeparator();
     }
     public static void printSeparator() {
         System.out.println("----------------------------------------------------------------------------");
@@ -44,5 +46,9 @@ public class Main {
         }
         System.out.println("Минимальная зарплата " + minSalary + " рублей. Максимальная зарплата " + maxSalary + " рублей");
     }
-
+    public static void printFIO(){
+        for (int i = 0; i < EmployeesBook.employees.length; i++){
+            System.out.println(EmployeesBook.employees[i].getFIO());
+        }
+    }
 }

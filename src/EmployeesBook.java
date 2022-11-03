@@ -1,6 +1,6 @@
 public class EmployeesBook {
-    public static Employee[] employees = employes();
-    public static Employee[] employes(){
+    public static Employee[] employees = employees();
+    public static Employee[] employees(){
         Employee[] employees = new Employee[10];
         employees[0] = new Employee("Лужин Егор Романович", 1, 32323);
         employees[1] = new Employee("Семак Сергей Богданович", 5, 50000);
