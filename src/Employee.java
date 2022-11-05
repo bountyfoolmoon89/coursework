@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Employee {
     private final String FIO;
     private int department;
@@ -26,6 +28,10 @@ public class Employee {
 
     public void setSalary(float salary) {
         this.salary = salary;
+    }
+
+    public static Employee[] filterByDepartment(int department){
+        return Arrays.stream(EmployeesBook.employees).filter(x -> (x != null) && (x.getDepartment() == department)).toArray(Employee[]::new);
     }
 
     public Employee(String fio, int department, float salary){
