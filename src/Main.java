@@ -1,9 +1,10 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         printSeparator();
-        for (Employee allEmployees : EmployeesBook.employees) {
-            System.out.println(allEmployees);
-        }
+        printAllEmployees();
         printSeparator();
         sumSalary();
         printSeparator();
@@ -27,9 +28,20 @@ public class Main {
         printSeparator();
         departmentIndexingSalary();
         printSeparator();
+        printDepartment();
+        printSeparator();
+        lessThanNumber();
+        printSeparator();
+        moreThanNumber();
+        printSeparator();
     }
     public static void printSeparator() {
         System.out.println("----------------------------------------------------------------------------");
+    }
+    public static void printAllEmployees(){
+        for (Employee allEmployees : EmployeesBook.employees) {
+            System.out.println(allEmployees);
+        }
     }
     public static void sumSalary(){
         float sum = 0;
@@ -133,5 +145,26 @@ public class Main {
             }
         }
     }
-
+    public static void printDepartment(){
+        int department = 3;
+        for (Employee depEmployees : Employee.filterByDepartment(department)) {
+            System.out.println("ФИО: " + depEmployees.getFIO() + " Зарплата: " + depEmployees.getSalary());
+        }
+    }
+    public static void lessThanNumber(){
+        float number = 70_000;
+        for (int i = 0; i < EmployeesBook.employees.length; i++) {
+            if (EmployeesBook.employees[i].getSalary() < number){
+                System.out.println("ID " + EmployeesBook.employees[i].getId() + " ФИО: " + EmployeesBook.employees[i].getFIO() + " Зарплата: " + EmployeesBook.employees[i].getSalary());
+            }
+        }
+    }
+    public static void moreThanNumber(){
+        float number = 70_000;
+        for (int i = 0; i < EmployeesBook.employees.length; i++) {
+            if (EmployeesBook.employees[i].getSalary() >= number){
+                System.out.println("ID " + EmployeesBook.employees[i].getId() + " ФИО: " + EmployeesBook.employees[i].getFIO() + " Зарплата: " + EmployeesBook.employees[i].getSalary());
+            }
+        }
+    }
 }
