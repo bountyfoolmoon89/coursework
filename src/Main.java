@@ -1,18 +1,13 @@
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         printSeparator();
         printAllEmployees();
         printSeparator();
-        sumSalary();
+        sumMidSalary();
         printSeparator();
         minSalary();
         printSeparator();
         maxSalary();
-        printSeparator();
-        midSalary();
         printSeparator();
         printFIO();
         printSeparator();
@@ -43,20 +38,18 @@ public class Main {
             System.out.println(allEmployees);
         }
     }
-    public static void sumSalary(){
+    public static float sumSalary(){
         float sum = 0;
         for (int i = 0; i < EmployeesBook.employees.length; i++) {
             sum = sum + EmployeesBook.employees[i].getSalary();
         }
         System.out.println("Сумма затрат на все зарплаты в месяц: " + sum);
+        return sum;
     }
-    public static void midSalary(){
-        float sum = 0;
+    public static void sumMidSalary(){
         double mid = 0;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            sum = sum + EmployeesBook.employees[i].getSalary();
-            mid = sum / EmployeesBook.employees.length;
-        }
+        mid = sumSalary() / EmployeesBook.employees.length;
+        printSeparator();
         System.out.println("Средняя зарплата: " + mid);
     }
     public static void minSalary() {

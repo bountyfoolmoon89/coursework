@@ -40,9 +40,14 @@ public class Employee {
         this.department = department;
         this.salary = salary;
     }
+    public void idCounter(){
+        synchronized (EmployeesBook.employees){
+            id++;
+        }
+    }
     @Override
     public String toString() {
-        id++;
+        idCounter();
         return "ID: " + id + " ФИО: " + FIO + " Отдел: " + department + " Зарплата: " + salary;
     }
 }
