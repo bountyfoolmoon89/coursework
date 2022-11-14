@@ -4,7 +4,8 @@ public class Employee {
     private final String FIO;
     private int department;
     private float salary;
-    private static int id = 100000;
+    public static int id;
+    public static int counter = 0;
 
     public String getFIO() {
         return FIO;
@@ -31,23 +32,16 @@ public class Employee {
     }
 
     public static Employee[] filterByDepartment(int department){
-        return Arrays.stream(EmployeesBook.employees).filter(x -> (x != null) && (x.getDepartment() == department)).toArray(Employee[]::new);
-
+        return Arrays.stream(Main.employees).filter(x -> (x != null) && (x.getDepartment() == department)).toArray(Employee[]::new);
     }
-
     public Employee(String fio, int department, float salary){
         this.FIO = fio;
         this.department = department;
         this.salary = salary;
     }
-    public void idCounter(){
-        synchronized (EmployeesBook.employees){
-            id++;
-        }
-    }
     @Override
     public String toString() {
-        idCounter();
+        id++;
         return "ID: " + id + " ФИО: " + FIO + " Отдел: " + department + " Зарплата: " + salary;
     }
 }
