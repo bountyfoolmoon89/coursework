@@ -4,7 +4,7 @@ public class Employee {
     private final String FIO;
     private int department;
     private float salary;
-    public static int id;
+    public int id;
     public static int counter = 0;
 
     public String getFIO() {
@@ -38,10 +38,12 @@ public class Employee {
         this.FIO = fio;
         this.department = department;
         this.salary = salary;
+        counter++;
+        id = counter;
+
     }
     @Override
     public String toString() {
-        id++;
         return "ID: " + id + " ФИО: " + FIO + " Отдел: " + department + " Зарплата: " + salary;
     }
 }

@@ -1,10 +1,23 @@
 public class Main {
+    public static Employee[] employees;
     public static void main(String[] args) {
-
+        employees = new Employee[10];
+        employees[0] = new Employee("Лужин Егор Романович", 1, 32323);
+        employees[1] = new Employee("Семак Сергей Богданович", 5, 50000);
+        employees[2] = new Employee("Романов Петр Алексеевич", 3, 23049);
+        employees[3] = new Employee("Пушкин Александр Сергеевич", 2, 49088);
+        employees[4] = new Employee("Мармеладова Софья Григорьевна", 4, 32900);
+        employees[5] = new Employee("Толстой Лев Николаевич", 2, 74666);
+        employees[6] = new Employee("Ульянов Владимир Ильич", 1, 19230);
+        employees[7] = new Employee("Ремарк Эрих Петерович",3, 340548);
+        employees[8] = new Employee("Ремарк Мария Джозефовна", 5, 32789);
+        employees[9] = new Employee("Трамп Дональд Фредович", 4, 123547);
         printSeparator();
         printAllEmployees();
         printSeparator();
-        sumMidSalary();
+        System.out.println("Сумма затрат на зарплаты:" + sumSalary());
+        printSeparator();
+        System.out.println("Средняя зарплата: " + midSalary());
         printSeparator();
         minSalary();
         printSeparator();
@@ -46,12 +59,8 @@ public class Main {
         }
         return sum;
     }
-    public static void sumMidSalary(){
-        double mid;
-        mid = sumSalary() / employees.length;
-        System.out.println("Сумма затрат на зарплаты:" + sumSalary());
-        printSeparator();
-        System.out.println("Средняя зарплата: " + mid);
+    public static float midSalary(){
+        return sumSalary() / employees.length;
     }
     public static void minSalary() {
         float minSalary = 1_000_000_000;
@@ -160,20 +169,5 @@ public class Main {
                 System.out.println("ID " + employee.getId() + " ФИО: " + employee.getFIO() + " Зарплата: " + employee.getSalary());
             }
         }
-    }
-    public static Employee[] employees = employees();
-    public static Employee[] employees(){
-        Employee[] employees = new Employee[10];
-        employees[0] = new Employee("Лужин Егор Романович", 1, 32323);
-        employees[1] = new Employee("Семак Сергей Богданович", 5, 50000);
-        employees[2] = new Employee("Романов Петр Алексеевич", 3, 23049);
-        employees[3] = new Employee("Пушкин Александр Сергеевич", 2, 49088);
-        employees[4] = new Employee("Мармеладова Софья Григорьевна", 4, 32900);
-        employees[5] = new Employee("Толстой Лев Николаевич", 2, 74666);
-        employees[6] = new Employee("Ульянов Владимир Ильич", 1, 19230);
-        employees[7] = new Employee("Ремарк Эрих Петерович",3, 340548);
-        employees[8] = new Employee("Ремарк Мария Джозефовна", 5, 32789);
-        employees[9] = new Employee("Трамп Дональд Фредович", 4, 123547);
-        return employees;
     }
 }
