@@ -1,17 +1,27 @@
 public class Main {
+    public static Employee[] employees;
     public static void main(String[] args) {
+        employees = new Employee[10];
+        employees[0] = new Employee("Лужин Егор Романович", 1, 32323);
+        employees[1] = new Employee("Семак Сергей Богданович", 5, 50000);
+        employees[2] = new Employee("Романов Петр Алексеевич", 3, 23049);
+        employees[3] = new Employee("Пушкин Александр Сергеевич", 2, 49088);
+        employees[4] = new Employee("Мармеладова Софья Григорьевна", 4, 32900);
+        employees[5] = new Employee("Толстой Лев Николаевич", 2, 74666);
+        employees[6] = new Employee("Ульянов Владимир Ильич", 1, 19230);
+        employees[7] = new Employee("Ремарк Эрих Петерович",3, 340548);
+        employees[8] = new Employee("Ремарк Мария Джозефовна", 5, 32789);
+        employees[9] = new Employee("Трамп Дональд Фредович", 4, 123547);
         printSeparator();
-        for (Employee allEmployees : EmployeesBook.employees) {
-            System.out.println(allEmployees);
-        }
+        printAllEmployees();
         printSeparator();
-        sumSalary();
+        System.out.println("Сумма затрат на зарплаты:" + sumSalary());
+        printSeparator();
+        System.out.println("Средняя зарплата: " + midSalary());
         printSeparator();
         minSalary();
         printSeparator();
         maxSalary();
-        printSeparator();
-        midSalary();
         printSeparator();
         printFIO();
         printSeparator();
@@ -27,63 +37,68 @@ public class Main {
         printSeparator();
         departmentIndexingSalary();
         printSeparator();
+        printDepartment();
+        printSeparator();
+        lessThanNumber();
+        printSeparator();
+        moreThanNumber();
+        printSeparator();
     }
     public static void printSeparator() {
         System.out.println("----------------------------------------------------------------------------");
     }
-    public static void sumSalary(){
-        float sum = 0;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            sum = sum + EmployeesBook.employees[i].getSalary();
+    public static void printAllEmployees(){
+        for (Employee allEmployees : employees) {
+            System.out.println(allEmployees);
         }
-        System.out.println("Сумма затрат на все зарплаты в месяц: " + sum);
     }
-    public static void midSalary(){
+    public static float sumSalary(){
         float sum = 0;
-        double mid = 0;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            sum = sum + EmployeesBook.employees[i].getSalary();
-            mid = sum / EmployeesBook.employees.length;
+        for (Employee employee : employees) {
+            sum = sum + employee.getSalary();
         }
-        System.out.println("Средняя зарплата: " + mid);
+        return sum;
+    }
+    public static float midSalary(){
+        return sumSalary() / employees.length;
     }
     public static void minSalary() {
         float minSalary = 1_000_000_000;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            if (EmployeesBook.employees[i].getSalary() < minSalary) {
-                minSalary = EmployeesBook.employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() < minSalary) {
+                minSalary = employee.getSalary();
             }
         }
         System.out.println("Минимальная зарплата " + minSalary + " рублей.");
     }
     public static void maxSalary() {
         float maxSalary = -1;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            if (EmployeesBook.employees[i].getSalary() > maxSalary) {
-                maxSalary = EmployeesBook.employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() > maxSalary) {
+                maxSalary = employee.getSalary();
             }
         }
         System.out.println("Максимальная зарплата " + maxSalary + " рублей.");
     }
     public static void printFIO(){
-        for (int i = 0; i < EmployeesBook.employees.length; i++){
-            System.out.println(EmployeesBook.employees[i].getFIO());
+        for (Employee employee : employees) {
+            System.out.println(employee.getFIO());
         }
     }
     public static void indexingSalary(){
         double indexedSalary;
-        for (int i = 0; i < EmployeesBook.employees.length; i++){
-            indexedSalary = EmployeesBook.employees[i].getSalary() * 1.2;
-            System.out.println("Новая зарплата у "+ EmployeesBook.employees[i].getFIO() + ": " + indexedSalary);
+        for (Employee employee : employees) {
+            indexedSalary = employee.getSalary() * 1.2;
+            System.out.println("Новая зарплата у " + employee.getFIO() + ": " + indexedSalary);
         }
     }
     public static void departmentMinSalary() {
         float minSalary = 1_000_000_001;
         int department = 1;
-        for (int i = 0; i < EmployeesBook.employees.length; i++){
-            if (EmployeesBook.employees[i].getDepartment() == department){
-                if (EmployeesBook.employees[i].getSalary() < minSalary) {
-                minSalary = EmployeesBook.employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == department) {
+                if (employee.getSalary() < minSalary) {
+                    minSalary = employee.getSalary();
                 }
             }
         }
@@ -92,10 +107,10 @@ public class Main {
     public static void departmentMaxSalary(){
         float maxSalary = -1;
         int department = 2;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            if (EmployeesBook.employees[i].getDepartment() == department) {
-                if (EmployeesBook.employees[i].getSalary() > maxSalary) {
-                    maxSalary = EmployeesBook.employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == department) {
+                if (employee.getSalary() > maxSalary) {
+                    maxSalary = employee.getSalary();
                 }
             }
         }
@@ -104,9 +119,9 @@ public class Main {
     public static void departmentSumSalary(){
         float sum = 0;
         int department = 3;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            if (EmployeesBook.employees[i].getDepartment() == department) {
-                sum = sum + EmployeesBook.employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == department) {
+                sum = sum + employee.getSalary();
             }
         }
         System.out.println("Сумма затрат на зарплаты отдела " + department + " в месяц: " + sum);
@@ -115,9 +130,9 @@ public class Main {
         float sum = 0;
         float mid = 0;
         int department = 3;
-        for (int i = 0; i < EmployeesBook.employees.length; i++) {
-            if (EmployeesBook.employees[i].getDepartment() == department) {
-                sum = sum + EmployeesBook.employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == department) {
+                sum = sum + employee.getSalary();
                 mid = sum / Employee.filterByDepartment(department).length;
             }
         }
@@ -126,10 +141,32 @@ public class Main {
     public static void departmentIndexingSalary(){
         double indexedSalary;
         int department = 5;
-        for (int i = 0; i < EmployeesBook.employees.length; i++){
-            if (EmployeesBook.employees[i].getDepartment() == department) {
-                indexedSalary = EmployeesBook.employees[i].getSalary() * 1.2;
-                System.out.println("Новая зарплата у " + EmployeesBook.employees[i].getFIO() + ": " + indexedSalary);
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == department) {
+                indexedSalary = employee.getSalary() * 1.2;
+                System.out.println("Новая зарплата у " + employee.getFIO() + ": " + indexedSalary);
+            }
+        }
+    }
+    public static void printDepartment(){
+        int department = 3;
+        for (Employee depEmployees : Employee.filterByDepartment(department)) {
+            System.out.println("ФИО: " + depEmployees.getFIO() + " Зарплата: " + depEmployees.getSalary());
+        }
+    }
+    public static void lessThanNumber(){
+        float number = 70_000;
+        for (Employee employee : employees) {
+            if (employee.getSalary() < number) {
+                System.out.println("ID " + employee.getId() + " ФИО: " + employee.getFIO() + " Зарплата: " + employee.getSalary());
+            }
+        }
+    }
+    public static void moreThanNumber(){
+        float number = 70_000;
+        for (Employee employee : employees) {
+            if (employee.getSalary() >= number) {
+                System.out.println("ID " + employee.getId() + " ФИО: " + employee.getFIO() + " Зарплата: " + employee.getSalary());
             }
         }
     }
