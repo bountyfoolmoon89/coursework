@@ -40,7 +40,6 @@ public class Employee {
         this.salary = salary;
         counter++;
         id = counter;
-
     }
     @Override
     public String toString() {
